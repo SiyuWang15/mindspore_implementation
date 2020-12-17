@@ -20,9 +20,9 @@ def infer_P8():
     CNN = CNN_Estimation()
     SD = DeepRx_SD()
 
-    fc_param = load_checkpoint('../checkpoints_my/fc.ckpt')
-    cnn_param = load_checkpoint('../checkpoints_my/cnn.ckpt')
-    sd_param = load_checkpoint('../checkpoints_my/sd.ckpt')
+    fc_param = load_checkpoint('./checkpoints_my/fc.ckpt')
+    cnn_param = load_checkpoint('./checkpoints_my/cnn.ckpt')
+    sd_param = load_checkpoint('./checkpoints_my/sd.ckpt')
 
     load_param_into_net(FC, fc_param)
     load_param_into_net(CNN, cnn_param)
@@ -69,9 +69,9 @@ def infer_P32():
     CNN = CNN_Estimation()
     SD = DeepRx_SD()
 
-    fc_param = load_checkpoint('../checkpoints_wxh/fc.ckpt')
-    cnn_param = load_checkpoint('../checkpoints_wxh/cnn.ckpt')
-    sd_param = load_checkpoint('../checkpoints_wxh/sd.ckpt')
+    fc_param = load_checkpoint('./checkpoints_wxh/fc.ckpt')
+    cnn_param = load_checkpoint('./checkpoints_wxh/cnn.ckpt')
+    sd_param = load_checkpoint('./checkpoints_wxh/sd.ckpt')
 
     load_param_into_net(FC, fc_param)
     load_param_into_net(CNN, cnn_param)
@@ -104,7 +104,7 @@ def infer_P32():
     X = np.concatenate(X, axis = 0)
     X = (X>0.5)
     X.tofile('./X_pre_1.bin')
-    label = np.fromfile('../checkpoints_wxh/X_pre_1.bin', dtype = np.bool)
+    label = np.fromfile('./checkpoints_wxh/X_pre_1.bin', dtype = np.bool)
     label = label.reshape([10000, 1024])
     print(f'Pn=32, similarity between mindspore and torch inference: {(X==label).mean()}')
 

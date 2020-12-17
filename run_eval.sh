@@ -1,2 +1,2 @@
-cd codes
+cd inference
 python eval.py
